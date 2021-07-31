@@ -1,24 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BarGraph} from './Graphing/Graph';
+import './App.scss';
+import { Filters } from './Filters/Filters';
+import { useState } from 'react';
+import { Button } from '@material-ui/core';
+import { GetLapTimes } from './DataFetch';
+import Race from './Filters/Race';
+import { Driver } from './Filters/Driver';
+import Circuit from './Filters/Circuit';
+
+// const onSubmit = () => {
+//   GetLapTimes
+// }
 
 function App() {
+
+  const [season, setSeason] = useState<string>("")
+  const [race, setRace] = useState<Race>(new Race(-1, "", new Circuit("", "")))
+  const [drivers, setDrivers] = useState<Array<Driver>>([])
+  const [selectedDrivers, setSelectedDrivers] = useState<Array<Driver>>([])
+
+  console.log(selectedDrivers)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        This a tool to visualize data from Formula 1 races
       </header>
+      <div>
+        <Filters
+          season={season}
+          setSeason={setSeason}
+          race={race}
+          setRace={setRace}
+          drivers={drivers}
+          setDrivers={setDrivers}
+          selectedDrivers={selectedDrivers}
+          setSelectedDrivers={setSelectedDrivers}
+        />
+        <Button >SUBMIT</Button>
+        <BarGraph/>
+      </div>
     </div>
   );
 }

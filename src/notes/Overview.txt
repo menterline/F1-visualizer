@@ -1,0 +1,18 @@
+MVP
+
+data visualizer - Ergast is hard to view, not graphical, not friendly interface, like a long dropdown of driver names
+This will be an easy way to quickly look up data like laptimes and pitstops, and see a graph. (can look per lap or over the course of the race)
+key features
+-auto complete driver names
+-friendly race lookup (2021 Austrian Grand Prix)
+-adding multiple drivers onto one graph for comparison
+-lap view vs. race view
+    -lap view is lap time vs. lap #
+    -race view is lap # vs. time (???) idea being able to see when drivers change order
+
+
+eventually - 
+using that same data fetching ability, we can make variations of interface
+- what if max was 0.2s slower per lap?
+- get standard deviation of lap times per stint, run monte carlo sims
+    - essentially asking the question: if we ran this race 1000 times, how different could the results be?
