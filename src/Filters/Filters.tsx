@@ -1,8 +1,7 @@
-import { Grid, MenuItem } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import React, { useState } from 'react'
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete'
-import { Drivers } from './DriverList'
 import './Filters.scss'
 import { GetDriversForRace, GetRacesForSeason } from './DataFetch';
 import { GetRaceName } from './functions';
@@ -25,7 +24,7 @@ export function Filters (props : FiltersProps) {
     return (
         <div className="filtersContainer">
             <Grid container>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={4}>
                     <Autocomplete className="filter"
                         options={["2019", "2020", "2021"]}
                         onChange={(e, value) => {
@@ -44,7 +43,7 @@ export function Filters (props : FiltersProps) {
                         renderInput={(params) => <TextField {...params} label="Season" variant="outlined" />}
                     />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={4}>
                     <Autocomplete className="filter"
                         options={raceOptions}
                         disabled={raceOptions.length <= 0}
@@ -64,7 +63,7 @@ export function Filters (props : FiltersProps) {
                         renderInput={(params) => <TextField {...params} label="Race" variant="outlined" />}
                     />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={4}>
                     <Autocomplete className="filter"
                         multiple
                         options={props.drivers}
