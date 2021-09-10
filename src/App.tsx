@@ -8,7 +8,6 @@ import Race from './Filters/Race';
 import { Driver } from './Filters/Driver';
 import Circuit from './Filters/Circuit';
 import { LapTime } from './LapTime';
-import { ConvertLapTimeToSeconds } from './functions';
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from 'recharts';
 
 
@@ -19,14 +18,15 @@ function App() {
   const [race, setRace] = useState<Race>(new Race(-1, "", new Circuit("", "")))
   const [drivers, setDrivers] = useState<Array<Driver>>([])
   const [selectedDrivers, setSelectedDrivers] = useState<Array<Driver>>([])
-  const [lapTimes, setLapTimes] = useState<Array<LapTime>>([])
+  const [lapTimes, setLapTimes] = useState<Array<Array<LapTime>>>([])
 
   const onSubmit = (season:string, race:Race, selectedDrivers:Array<Driver>) => {
     GetLapTimes(season, race, selectedDrivers).then(result => 
-      setLapTimes(result.map(x => x))
+      setLapTimes(result)
     )
   }
 
+  console.log(lapTimes)
   return (
     <div className="App">
       <header>
@@ -47,7 +47,7 @@ function App() {
         <LineChart 
           width={1400} 
           height={800} 
-          data={lapTimes}
+          data={lapTimes[0]}
           margin={{top:40, right:40, bottom:20, left:20}}>
             <CartesianGrid vertical={false}/>
             <XAxis dataKey="lapNumber" label="lap number"/>

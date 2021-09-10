@@ -1,5 +1,5 @@
 export class Driver {
-    driverID:string;
+    driverId:string;
     permanentNumber:string;
     code:string;
     givenName:string;
@@ -16,7 +16,7 @@ export class Driver {
         dateOfBirth:string,
         nationality:string
     ) {
-        this.driverID = driverID
+        this.driverId = driverID
         this.permanentNumber = permanentNumber
         this.code = code
         this.givenName = givenName

@@ -1,1 +1,0 @@
-export const Drivers = ["Max Versatappen", "Daniel Ricciardo", "Lewis Hamilton"]

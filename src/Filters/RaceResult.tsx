@@ -17,7 +17,7 @@ export class RaceResult {
         this.position = position;
         this.points = points;
         this.Driver = new Driver(
-            driver.driverID, 
+            driver.driverId, 
             driver.permanentNumber, 
             driver.code,
             driver.givenName,

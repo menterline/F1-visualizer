@@ -38,6 +38,5 @@ export async function GetDriversForRace(season:string, race: Race): Promise<Race
         }
     }
     const response:resultsResponse = await getRequest(url)
-    console.log(response.MRData.RaceTable.Races[0].Results)
     return new RaceResults(response.MRData.RaceTable.Races[0].Results);
 }
