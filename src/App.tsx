@@ -59,7 +59,7 @@ function App() {
             <YAxis label="time"/>
             {
               selectedDrivers.map((driver) => {
-                return <Line key={driver.driverId} type="monotone" dataKey="driverMap.get(driver.driverId)" stroke="#8884d8" activeDot={{r: 8}}/>
+                return <Line key={driver.driverId} type="monotone" dataKey={(data) => data.driverMap.get(driver.driverId)} stroke="#8884d8" activeDot={{r: 8}}/>
               })
             }
         </LineChart>
