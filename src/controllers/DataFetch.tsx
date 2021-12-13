@@ -1,6 +1,6 @@
-import Race from "./Race";
-import RaceResults from "./RaceResults";
-import RaceResult from './RaceResult'
+import Race from "../model/Race";
+import RaceResults from "../model/RaceResults";
+import RaceResult from '../model/RaceResult'
 
 type RaceData = {
     MRData: {

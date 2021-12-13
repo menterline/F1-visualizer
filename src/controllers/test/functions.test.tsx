@@ -1,4 +1,14 @@
 import { ConvertLapTimeToSeconds } from "../functions"
+import Circuit from "../../model/Circuit";
+import Race from "../../model/Race"
+import { GetRaceName } from "../functions";
+
+describe('GetRaceName', () => {
+    it('Gets name for race', () => {
+        const testRace = new Race(1, "testRace", new Circuit("circuit1", "testCircuit"));
+        expect(GetRaceName(testRace)).toEqual("testRace - testCircuit")
+    })
+})
 
 describe('ConvertLapTimeToSeconds', () => {
     it('converts 1 minute', () => {

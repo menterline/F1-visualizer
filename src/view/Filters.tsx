@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import './Filters.scss'
-import { GetDriversForRace, GetRacesForSeason } from './DataFetch';
-import { GetRaceName } from './functions';
-import Race from './Race';
-import { Driver } from './Driver';
+import { GetDriversForRace, GetRacesForSeason } from '../controllers/DataFetch';
+import { GetRaceName } from '../controllers/functions';
+import Race from '../model/Race';
+import { Driver } from '../model/Driver';
 
 type FiltersProps = {
     season:string;
@@ -27,6 +27,10 @@ export function Filters (props : FiltersProps) {
                 <Grid item xs={12} sm={4}>
                     <Autocomplete className="filter"
                         options={["2019", "2020", "2021"]}
+                        getOptionSelected={(option, value) => {
+                            if(value === "" || value === option) { return true; }
+                            return false;
+                        }}
                         onChange={(e, value) => {
                             if (value != null) {
                                 props.setSeason(value);

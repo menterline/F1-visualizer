@@ -1,8 +1,9 @@
-import { getRequest } from "./Filters/DataFetch";
-import { Driver } from "./Filters/Driver";
-import Race from "./Filters/Race";
-import { ConvertLapTimeResponse, LapTimesResponse } from "./functions";
-import { LapTime } from "./LapTime";
+import { getRequest } from "./controllers/DataFetch";
+import { Driver } from "./model/Driver";
+import Race from "./model/Race";
+import { ConvertLapTimeResponse} from "./controllers/functions";
+import { LapTimesResponse } from "./model/LapTimesResponse";
+import { LapTime } from "./model/LapTime";
 
 
 async function GetLapTimesForDriver(season:string, race:Race, driver:Driver) : Promise<Array<LapTime>> {
