@@ -1,19 +1,11 @@
-import { LapTime } from "./model/LapTime";
-import { LapTimeForGraph } from "./model/lapTimeForGraph.d";
+import { LapTime } from "./models/LapTime.d";
+import { LapTimeForGraph } from "./models/lapTimeForGraph.d";
 
-/*
-take array of laptime arrays and convert to
-single array of form
-{
-    lapNumber:
-    lapTimes:[time1, time2]
-    ...
-*/
-export function RegroupLapTimes (allLapTimes: Array<Array<LapTime>> ): LapTimeForGraph[] {
+export function RegroupLapTimes(allLapTimes: Array<Array<LapTime>>): LapTimeForGraph[] {
     const numDrivers = allLapTimes.length
     let numLaps = 0
 
-    let regroupedLapTimes:LapTimeForGraph[] = []
+    let regroupedLapTimes: LapTimeForGraph[] = []
     allLapTimes.map(driverLapTime => {
         if (driverLapTime.length > numLaps) {
             numLaps = driverLapTime.length

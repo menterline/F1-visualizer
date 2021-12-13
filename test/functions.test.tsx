@@ -1,7 +1,7 @@
-import { ConvertLapTimeToSeconds } from "../functions"
-import Circuit from "../../model/Circuit";
-import Race from "../../model/Race"
-import { GetRaceName } from "../functions";
+import { ConvertLapTimeToSeconds } from "../src/components/Filters/functions"
+import Circuit from "../src/models/Circuit.d";
+import Race from "../src/models/Race.d"
+import { GetRaceName } from "../src/components/Filters/functions";
 
 describe('GetRaceName', () => {
     it('Gets name for race', () => {

@@ -21,6 +21,8 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src",
+    "test/DataFetch.test.tsx",
+    "test/functions.test.tsx"
   ]
 }
