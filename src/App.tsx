@@ -29,7 +29,6 @@ function App() {
     })
   }
 
-  console.log(mappedLapTimes)
   return (
     <div className="App">
       <header>

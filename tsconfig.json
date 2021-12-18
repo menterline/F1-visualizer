@@ -22,7 +22,6 @@
   },
   "include": [
     "src",
-    "test/DataFetch.test.tsx",
-    "test/functions.test.tsx"
+    "test",
   ]
 }
