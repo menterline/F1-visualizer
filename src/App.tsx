@@ -8,9 +8,9 @@ import Race from './models/Race.d';
 import { Driver } from './models/Driver.d';
 import Circuit from './models/Circuit.d';
 import { LapTime } from './models/LapTime.d';
-import { CartesianGrid, Line, LineChart, XAxis, YAxis } from 'recharts';
+import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis, Tooltip } from 'recharts';
 import { LapTimeForGraph } from './models/lapTimeForGraph.d';
-import { RegroupLapTimes } from './functions';
+import { pickRandomColor, RegroupLapTimes } from './functions';
 
 
 
@@ -51,12 +51,14 @@ function App() {
           height={800}
           data={mappedLapTimes}
           margin={{ top: 40, right: 40, bottom: 20, left: 20 }}>
-          <CartesianGrid vertical={false} />
+          <CartesianGrid strokeDasharray="3 3"/>
+          <Legend />
+          <Tooltip />
           <XAxis dataKey="lapNumber" label="lap number" />
           <YAxis label="time" />
           {
             selectedDrivers.map((driver) => {
-              return <Line key={driver.driverId} type="monotone" dataKey={(data) => data.driverMap.get(driver.driverId)} stroke="#8884d8" activeDot={{ r: 8 }} />
+              return <Line key={driver.driverId} type="monotone" dataKey={(data) => data.driverMap.get(driver.driverId)} stroke={(pickRandomColor())} activeDot={{ r: 8 }} />
             })
           }
         </LineChart>
