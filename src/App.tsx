@@ -10,7 +10,7 @@ import Circuit from './models/Circuit.d';
 import { LapTime } from './models/LapTime.d';
 import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis, Tooltip, Label } from 'recharts';
 import { LapTimeForGraph } from './models/lapTimeForGraph.d';
-import { pickRandomColor, RegroupLapTimes } from './functions';
+import { RegroupLapTimes } from './functions';
 
 
 
@@ -28,6 +28,8 @@ function App() {
       setMappedLapTimes(RegroupLapTimes(result))
     })
   }
+
+  const colors = ["#00FFFF", "#FF7F50", "#006400", "#8B008B", "#000000"]
 
   return (
     <div className="App">
@@ -51,18 +53,27 @@ function App() {
           height={800}
           data={mappedLapTimes}
           margin={{ top: 40, right: 40, bottom: 30, left: 70 }}>
-          <CartesianGrid strokeDasharray="3 3"/>
-          <Legend verticalAlign="top"/>
+          <CartesianGrid strokeDasharray="3 3" />
+          <Legend verticalAlign="top"
+            payload={
+              selectedDrivers.map((driver, i) => ({
+                id: driver.driverId,
+                type: "square",
+                value: driver.givenName + " " + driver.familyName,
+                color: colors[i]
+              }))
+            }
+          />
           <Tooltip />
           <XAxis dataKey="lapNumber" tickCount={10} type="number">
-            <Label value="lap number" position="bottom"/>
+            <Label value="lap number" position="bottom" />
           </XAxis>
           <YAxis>
-            <Label position="left" value="time" angle={-90}/>
+            <Label position="left" value="time" angle={-90} />
           </YAxis>
           {
-            selectedDrivers.map((driver) => {
-              return <Line key={driver.driverId} type="monotone" dataKey={(data) => data.driverMap.get(driver.driverId)} stroke={(pickRandomColor())} activeDot={{ r: 8 }} />
+            selectedDrivers.map((driver, i) => {
+              return <Line key={driver.driverId} type="monotone" dataKey={(data) => data.driverMap.get(driver.driverId)} stroke={colors[i]} activeDot={{ r: 8 }} />
             })
           }
         </LineChart>

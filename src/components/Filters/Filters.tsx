@@ -24,7 +24,7 @@ export function Filters(props: FiltersProps) {
     return (
         <div className="filtersContainer">
             <Grid container>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={2}>
                     <Autocomplete className="filter"
                         options={["2019", "2020", "2021"]}
                         getOptionSelected={(option, value) => {
